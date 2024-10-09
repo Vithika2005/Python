@@ -1,0 +1,18 @@
+def bcd_to_gray(bcd):
+    # Convert BCD to binary string
+    binary_str = ''.join(format(int(digit), '04b') for digit in bcd)
+    
+    # Convert binary string to Gray code
+    gray_str = binary_str[0]  # The first bit is the same
+    
+    for i in range(1, len(binary_str)):
+        # XOR the current bit with the previous bit
+        gray_bit = int(binary_str[i - 1]) ^ int(binary_str[i])
+        gray_str += str(gray_bit)
+    
+    return gray_str
+
+# Example usage
+bcd_input = "1010"  # BCD representation for 10
+gray_output = bcd_to_gray(bcd_input)
+print(f"BCD: {bcd_input} -> Gray Code: {gray_output}")
